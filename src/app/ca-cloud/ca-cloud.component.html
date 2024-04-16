@@ -1,0 +1,14 @@
+<!-- <router-outlet></router-outlet> -->
+
+<div *ngIf="!files?.length" class="col-12 rmpm dropzone" appDrag (files)="filesDropped($event)" [disabled]="disabled">
+	<div class="text-wrapper">
+		<div class="centered">Drop your file here!</div>
+	</div>
+</div>
+<!--droped image preview-->
+<div *ngFor="let file of files">
+  <img *ngIf="file" [src]="file.url" width="100px" height="100px">
+	<a href="javascript:void(0)" (click)="download(file.url.changingThisBreaksApplicationSecurity)">{{file.url.changingThisBreaksApplicationSecurity}}</a>
+</div>
+
+<button type="button" (click)="upload()" [disabled]="disabled">Upload Image</button>
